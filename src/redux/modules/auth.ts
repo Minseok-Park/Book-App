@@ -18,20 +18,18 @@ export const { pending, success, fail } = createActions(
   "PENDING",
   "SUCCESS",
   "FAIL",
-  { prefix }
+  {
+    prefix,
+  }
 );
 
 const reducer = handleActions<AuthState, string>(
   {
-    PENDING: (state) => ({
-      ...state,
-      loading: true,
-      error: null,
-    }),
+    PENDING: (state) => ({ ...state, loading: true, error: null }),
     SUCCESS: (state, action) => ({
       ...state,
-      token: action.payload,
       loading: false,
+      token: action.payload,
       error: null,
     }),
     FAIL: (state, action: any) => ({
